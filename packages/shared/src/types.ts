@@ -33,7 +33,8 @@ export interface CustomModelConfig {
 
 export type ArtifactLengthOptions = "shortest" | "short" | "long" | "longest";
 
-export type ArtifactType = "code" | "text";
+// For new artifact types, add them here
+export type ArtifactType = "text";
 
 export interface ArtifactContent {
   index: number;
@@ -56,17 +57,16 @@ export interface ArtifactToolResponse {
   type?: string;
 }
 
-export type RewriteArtifactMetaToolResponse =
-  | {
-      type: "text";
-      title?: string;
-      language: ProgrammingLanguageOptions;
-    }
-  | {
-      type: "code";
-      title: string;
-      language: ProgrammingLanguageOptions;
-    };
+export type RewriteArtifactMetaToolResponse = {
+  type: "text";
+  title?: string;
+  // language: ProgrammingLanguageOptions;
+};
+// | {
+//     type: "code";
+//     title: string;
+//     language: ProgrammingLanguageOptions;
+//   };
 
 export type LanguageOptions =
   | "english"
@@ -75,21 +75,22 @@ export type LanguageOptions =
   | "french"
   | "hindi";
 
-export type ProgrammingLanguageOptions =
-  | "typescript"
-  | "javascript"
-  | "cpp"
-  | "java"
-  | "php"
-  | "python"
-  | "html"
-  | "sql"
-  | "json"
-  | "rust"
-  | "xml"
-  | "clojure"
-  | "csharp"
-  | "other";
+// ! REMOVE
+// export type ProgrammingLanguageOptions =
+//   | "typescript"
+//   | "javascript"
+//   | "cpp"
+//   | "java"
+//   | "php"
+//   | "python"
+//   | "html"
+//   | "sql"
+//   | "json"
+//   | "rust"
+//   | "xml"
+//   | "clojure"
+//   | "csharp"
+//   | "other";
 
 export type ReadingLevelOptions =
   | "pirate"
@@ -98,10 +99,11 @@ export type ReadingLevelOptions =
   | "college"
   | "phd";
 
-export interface CodeHighlight {
-  startCharIndex: number;
-  endCharIndex: number;
-}
+// ! REMOVE
+// export interface CodeHighlight {
+//   startCharIndex: number;
+//   endCharIndex: number;
+// }
 
 export interface ArtifactMarkdownV3 {
   index: number;
@@ -110,17 +112,18 @@ export interface ArtifactMarkdownV3 {
   fullMarkdown: string;
 }
 
-export interface ArtifactCodeV3 {
-  index: number;
-  type: "code";
-  title: string;
-  language: ProgrammingLanguageOptions;
-  code: string;
-}
+// ! REMOVE
+// export interface ArtifactCodeV3 {
+//   index: number;
+//   type: "code";
+//   title: string;
+//   language: ProgrammingLanguageOptions;
+//   code: string;
+// }
 
 export interface ArtifactV3 {
   currentIndex: number;
-  contents: (ArtifactMarkdownV3 | ArtifactCodeV3)[];
+  contents: ArtifactMarkdownV3[]; // to add new artifact types, add them here
 }
 
 export interface TextHighlight {
@@ -206,7 +209,7 @@ export type SearchResult = DocumentInterface<ExaMetadata>;
 export interface GraphInput {
   messages?: Record<string, any>[];
 
-  highlightedCode?: CodeHighlight;
+  // highlightedCode?: CodeHighlight; // ! REMOVE
   highlightedText?: TextHighlight;
 
   artifact?: ArtifactV3;
@@ -218,10 +221,10 @@ export interface GraphInput {
   regenerateWithEmojis?: boolean;
   readingLevel?: ReadingLevelOptions;
 
-  addComments?: boolean;
-  addLogs?: boolean;
-  portLanguage?: ProgrammingLanguageOptions;
-  fixBugs?: boolean;
+  // addComments?: boolean;
+  // addLogs?: boolean;
+  // portLanguage?: ProgrammingLanguageOptions;
+  // fixBugs?: boolean;
   customQuickActionId?: string;
 
   webSearchEnabled?: boolean;
