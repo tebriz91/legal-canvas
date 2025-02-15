@@ -1,9 +1,6 @@
 import { BaseMessage } from "@langchain/core/messages";
 import { LangGraphRunnableConfig } from "@langchain/langgraph";
-import {
-  getArtifactContent,
-  isArtifactMarkdownContent,
-} from "@opencanvas/shared/utils/artifacts";
+import { getArtifactContent } from "@opencanvas/shared/utils/artifacts";
 import {
   ArtifactMarkdownV3,
   ArtifactV3,
