@@ -1,9 +1,5 @@
 import { NEW_ARTIFACT_PROMPT } from "../../prompts.js";
-import {
-  ArtifactCodeV3,
-  ArtifactMarkdownV3,
-  ProgrammingLanguageOptions,
-} from "@opencanvas/shared/types";
+import { ArtifactMarkdownV3 } from "@opencanvas/shared/types";
 import { z } from "zod";
 import { ARTIFACT_TOOL_SCHEMA } from "./schemas.js";
 
@@ -21,19 +17,7 @@ export const formatNewArtifactPrompt = (
 
 export const createArtifactContent = (
   toolCall: z.infer<typeof ARTIFACT_TOOL_SCHEMA>
-): ArtifactCodeV3 | ArtifactMarkdownV3 => {
-  const artifactType = toolCall?.type;
-
-  if (artifactType === "code") {
-    return {
-      index: 1,
-      type: "code",
-      title: toolCall?.title,
-      code: toolCall?.artifact,
-      language: toolCall?.language as ProgrammingLanguageOptions,
-    };
-  }
-
+): ArtifactMarkdownV3 => {
   return {
     index: 1,
     type: "text",

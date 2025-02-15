@@ -1,8 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
-import { isArtifactCodeContent } from "@opencanvas/shared/utils/artifacts";
 import {
   CustomModelConfig,
-  ArtifactCodeV3,
   ArtifactMarkdownV3,
   Reflections,
   ContextDocument,
@@ -131,26 +129,18 @@ export async function getFormattedReflections(
 }
 
 export const formatArtifactContent = (
-  content: ArtifactMarkdownV3 | ArtifactCodeV3,
+  content: ArtifactMarkdownV3,
   shortenContent?: boolean
 ): string => {
-  let artifactContent: string;
-
-  if (isArtifactCodeContent(content)) {
-    artifactContent = shortenContent
-      ? content.code?.slice(0, 500)
-      : content.code;
-  } else {
-    artifactContent = shortenContent
-      ? content.fullMarkdown?.slice(0, 500)
-      : content.fullMarkdown;
-  }
+  const artifactContent: string = shortenContent
+    ? content.fullMarkdown?.slice(0, 500)
+    : content.fullMarkdown;
   return `Title: ${content.title}\nArtifact type: ${content.type}\nContent: ${artifactContent}`;
 };
 
 export const formatArtifactContentWithTemplate = (
   template: string,
-  content: ArtifactMarkdownV3 | ArtifactCodeV3,
+  content: ArtifactMarkdownV3,
   shortenContent?: boolean
 ): string => {
   return template.replace(

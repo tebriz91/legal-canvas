@@ -43,9 +43,15 @@ export const rewriteArtifact = async (
   const artifactType = artifactMetaToolCall.type;
   const isNewType = artifactType !== currentArtifactContent.type;
 
-  const artifactContent = isArtifactMarkdownContent(currentArtifactContent)
-    ? currentArtifactContent.fullMarkdown
-    : currentArtifactContent.code;
+  // Since we only expect markdown artifacts, throw if the content is not markdown.
+  if (!isArtifactMarkdownContent(currentArtifactContent)) {
+    throw new Error(
+      "Unexpected artifact type. Only markdown artifacts are supported."
+    );
+  }
+
+  // Declare artifactContent based on markdown content.
+  const artifactContent = currentArtifactContent.fullMarkdown;
 
   const formattedPrompt = buildPrompt({
     artifactContent,

@@ -1,29 +1,14 @@
-import { PROGRAMMING_LANGUAGES } from "@opencanvas/shared/constants";
+// import { PROGRAMMING_LANGUAGES } from "@opencanvas/shared/constants";
 import { z } from "zod";
 
 export const ARTIFACT_TOOL_SCHEMA = z.object({
   type: z
-    .enum(["code", "text"])
+    .enum(["text"])
     .describe("The content type of the artifact generated."),
   language: z
-    .enum(
-      PROGRAMMING_LANGUAGES.map((lang) => lang.language) as [
-        string,
-        ...string[],
-      ]
-    )
+    .string()
     .optional()
-    .describe(
-      "The language/programming language of the artifact generated.\n" +
-        "If generating code, it should be one of the options, or 'other'.\n" +
-        "If not generating code, the language should ALWAYS be 'other'."
-    ),
-  isValidReact: z
-    .boolean()
-    .optional()
-    .describe(
-      "Whether or not the generated code is valid React code. Only populate this field if generating code."
-    ),
+    .describe("The language of the artifact generated.\n"),
   artifact: z.string().describe("The content of the artifact to generate."),
   title: z
     .string()

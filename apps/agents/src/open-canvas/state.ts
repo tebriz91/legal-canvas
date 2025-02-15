@@ -2,9 +2,7 @@ import { BaseMessage, BaseMessageLike } from "@langchain/core/messages";
 import {
   ArtifactLengthOptions,
   LanguageOptions,
-  ProgrammingLanguageOptions,
   ReadingLevelOptions,
-  CodeHighlight,
   ArtifactV3,
   TextHighlight,
   SearchResult,
@@ -72,11 +70,6 @@ export const OpenCanvasGraphAnnotation = Annotation.Root({
     default: () => [],
   }),
   /**
-   * The part of the artifact the user highlighted. Use the `selectedArtifactId`
-   * to determine which artifact the highlight belongs to.
-   */
-  highlightedCode: Annotation<CodeHighlight | undefined>,
-  /**
    * The highlighted text. This includes the markdown blocks which the highlighted
    * text belongs to, along with the entire plain text content of highlight.
    */
@@ -105,22 +98,6 @@ export const OpenCanvasGraphAnnotation = Annotation.Root({
    * The reading level to adjust the artifact to.
    */
   readingLevel: Annotation<ReadingLevelOptions | undefined>,
-  /**
-   * Whether or not to add comments to the code artifact.
-   */
-  addComments: Annotation<boolean | undefined>,
-  /**
-   * Whether or not to add logs to the code artifact.
-   */
-  addLogs: Annotation<boolean | undefined>,
-  /**
-   * The programming language to port the code artifact to.
-   */
-  portLanguage: Annotation<ProgrammingLanguageOptions | undefined>,
-  /**
-   * Whether or not to fix bugs in the code artifact.
-   */
-  fixBugs: Annotation<boolean | undefined>,
   /**
    * The ID of the custom quick action to use.
    */
