@@ -58,10 +58,19 @@ export const reflect = async (
     ? getArtifactContent(state.artifact)
     : undefined;
 
+  // Only markdown artifacts are supported. Throw error if not.
+  if (
+    currentArtifactContent &&
+    !isArtifactMarkdownContent(currentArtifactContent)
+  ) {
+    throw new Error(
+      "Unexpected artifact type. Only markdown artifacts are supported."
+    );
+  }
+
+  // Use fullMarkdown from the markdown artifact.
   const artifactContent = currentArtifactContent
-    ? isArtifactMarkdownContent(currentArtifactContent)
-      ? currentArtifactContent.fullMarkdown
-      : currentArtifactContent.code
+    ? currentArtifactContent.fullMarkdown
     : undefined;
 
   const formattedSystemPrompt = REFLECT_SYSTEM_PROMPT.replace(
