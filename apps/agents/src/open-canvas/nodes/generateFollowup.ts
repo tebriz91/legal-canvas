@@ -43,11 +43,19 @@ export const generateFollowup = async (
     ? getArtifactContent(state.artifact)
     : undefined;
 
-  const artifactContent = currentArtifactContent
-    ? isArtifactMarkdownContent(currentArtifactContent)
-      ? currentArtifactContent.fullMarkdown
-      : currentArtifactContent.code
-    : undefined;
+  if (!currentArtifactContent) {
+    throw new Error("No artifact found");
+  }
+
+  // Since only markdown artifacts are expected, throw if the content is not markdown.
+  if (!isArtifactMarkdownContent(currentArtifactContent)) {
+    throw new Error(
+      "Unexpected artifact type. Only markdown artifacts are supported."
+    );
+  }
+
+  // Use the fullMarkdown text from the artifact.
+  const artifactContent = currentArtifactContent.fullMarkdown;
 
   const formattedPrompt = FOLLOWUP_ARTIFACT_PROMPT.replace(
     "{artifactContent}",
