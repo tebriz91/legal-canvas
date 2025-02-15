@@ -7,9 +7,7 @@ import { generatePath } from "./nodes/generate-path/index.js";
 import { reflectNode } from "./nodes/reflect.js";
 import { rewriteArtifact } from "./nodes/rewrite-artifact/index.js";
 import { rewriteArtifactTheme } from "./nodes/rewriteArtifactTheme.js";
-import { updateArtifact } from "./nodes/updateArtifact.js";
 import { replyToGeneralInput } from "./nodes/replyToGeneralInput.js";
-import { rewriteCodeArtifactTheme } from "./nodes/rewriteCodeArtifactTheme.js";
 import { generateTitleNode } from "./nodes/generateTitle.js";
 import { updateHighlightedText } from "./nodes/updateHighlightedText.js";
 import { OpenCanvasGraphAnnotation } from "./state.js";
@@ -113,8 +111,6 @@ const builder = new StateGraph(OpenCanvasGraphAnnotation)
   .addNode("replyToGeneralInput", replyToGeneralInput)
   .addNode("rewriteArtifact", rewriteArtifact)
   .addNode("rewriteArtifactTheme", rewriteArtifactTheme)
-  .addNode("rewriteCodeArtifactTheme", rewriteCodeArtifactTheme)
-  .addNode("updateArtifact", updateArtifact)
   .addNode("updateHighlightedText", updateHighlightedText)
   .addNode("generateArtifact", generateArtifact)
   .addNode("customAction", customAction)
@@ -127,9 +123,7 @@ const builder = new StateGraph(OpenCanvasGraphAnnotation)
   .addNode("routePostWebSearch", routePostWebSearch)
   // Initial router
   .addConditionalEdges("generatePath", routeNode, [
-    "updateArtifact",
     "rewriteArtifactTheme",
-    "rewriteCodeArtifactTheme",
     "replyToGeneralInput",
     "generateArtifact",
     "rewriteArtifact",
@@ -139,11 +133,9 @@ const builder = new StateGraph(OpenCanvasGraphAnnotation)
   ])
   // Edges
   .addEdge("generateArtifact", "generateFollowup")
-  .addEdge("updateArtifact", "generateFollowup")
   .addEdge("updateHighlightedText", "generateFollowup")
   .addEdge("rewriteArtifact", "generateFollowup")
   .addEdge("rewriteArtifactTheme", "generateFollowup")
-  .addEdge("rewriteCodeArtifactTheme", "generateFollowup")
   .addEdge("customAction", "generateFollowup")
   .addEdge("webSearch", "routePostWebSearch")
   // End edges
