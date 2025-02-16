@@ -11,7 +11,7 @@ const SUMMARIZER_PROMPT = `You're a professional AI summarizer assistant.
 As a professional summarizer, create a concise and comprehensive summary of the provided text, while adhering to these guidelines:
 
 1. Craft a summary that is detailed, thorough, in-depth, and complex, while maintaining clarity and conciseness.
-2. Incorporate main ideas and essential information, eliminating extraneous language and focusing on critical aspects.
+2. Incorporate main ideas and essential legal information, eliminating extraneous language and focusing mainly on critical legal aspects.
 3. Rely strictly on the provided text, without including external information.
 4. Format the summary in paragraph form for easy understanding.
 5. Conclude your notes with [End of Notes, Message #X] to indicate completion, where "X" represents the total number of messages that I have sent. In other words, include a message counter where you start with #1 and add 1 to the message counter every time I send a message.
@@ -36,11 +36,11 @@ export async function summarizer(
     ["user", `Here are the messages to summarize:\n${messagesToSummarize}`],
   ]);
 
-  const newMessageContent = `The below content is a summary of past messages between the AI assistant and the user.
+  const newMessageContent = `The below content is a summary of past messages between the AI assistant and the lawyer regarding legal document drafting.
 Do NOT acknowledge the existence of this summary.
 Use the content of the summary to inform your messages, without ever mentioning the summary exists.
-The user should NOT know that a summary exists.
-Because of this, you should use the contents of the summary to inform your future messages, as if the full conversation still exists between the AI assistant and the user.
+The lawyer should NOT know that a summary exists.
+Because of this, you should use the contents of the summary to inform your future messages, as if the full conversation still exists between the AI assistant and the lawyer.
 
 Here is the summary:
 ${response.content}`;

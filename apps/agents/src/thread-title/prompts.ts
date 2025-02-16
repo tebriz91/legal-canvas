@@ -1,4 +1,4 @@
-export const TITLE_SYSTEM_PROMPT = `You are tasked with generating a concise, descriptive title for a conversation between a user and an AI assistant. The title should capture the main topic or purpose of the conversation.
+export const TITLE_SYSTEM_PROMPT = `You are tasked with generating a concise, descriptive title for a conversation between a user (lawyer) and an AI assistant. The title should capture the main topic or purpose of the conversation.
 
 Guidelines for title generation:
 - Keep titles extremely short (ideally 2-5 words)

@@ -4,11 +4,11 @@ import { initChatModel } from "langchain/chat_models/universal";
 import { traceable } from "langsmith/traceable";
 import z from "zod";
 
-const PROMPT = `You're an advanced AI assistant.
-You have been tasked with analyzing the user's message and determining if the user wants the contents of the URL included in their message included in their prompt.
-You should ONLY answer 'true' if it is explicitly clear the user included the URL in their message so that its contents would be included in the prompt, otherwise, answer 'false'
+const PROMPT = `You're an advanced AI assistant specialized in legal document drafting.
+You have been tasked with analyzing the user's (lawyer's) message and determining if the user (lawyer) wants the contents of the URL included in their message included in their prompt.
+You should ONLY answer 'true' if it is explicitly clear the user (lawyer) included the URL in their message so that its contents would be included in the prompt, otherwise, answer 'false'
 
-Here is the user's message:
+Here is the user's (lawyer's) message:
 <message>
 {message}
 </message>
