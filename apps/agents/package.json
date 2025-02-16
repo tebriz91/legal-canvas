@@ -1,7 +1,6 @@
 {
-  "name": "@opencanvas/agents",
-  "author": "Brace Sproul",
-  "repository": "https://github.com/langchain-ai/open-canvas",
+  "name": "@legal-canvas/agents",
+  "repository": "https://github.com/tebriz91/legal-canvas",
   "version": "0.0.1",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

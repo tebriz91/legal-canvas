@@ -1,8 +1,6 @@
 {
-  "name": "open_canvas",
-  "author": "Brace Sproul",
-  "homepage": "https://opencanvas.langchain.com",
-  "repository": "https://github.com/langchain-ai/open-canvas",
+  "name": "legal-canvas",
+  "repository": "https://github.com/tebriz91/legal-canvas",
   "private": true,
   "workspaces": ["apps/*", "packages/*"],
   "scripts": {
