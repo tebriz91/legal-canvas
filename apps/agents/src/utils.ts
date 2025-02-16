@@ -20,11 +20,7 @@ import {
   CONTEXT_DOCUMENTS_NAMESPACE,
   OC_WEB_SEARCH_RESULTS_MESSAGE_KEY,
 } from "@legal-canvas/shared/constants";
-import {
-  TEMPERATURE_EXCLUDED_MODELS,
-  LANGCHAIN_USER_ONLY_MODELS,
-} from "@legal-canvas/shared/models";
-import { createClient, Session, User } from "@supabase/supabase-js";
+import { TEMPERATURE_EXCLUDED_MODELS } from "@legal-canvas/shared/models";
 
 export const formatReflections = (
   reflections: Reflections,
@@ -297,32 +293,6 @@ export function optionallyGetSystemPromptFromConfig(
   return config.configurable?.systemPrompt as string | undefined;
 }
 
-async function getUserFromConfig(
-  config: LangGraphRunnableConfig
-): Promise<User | undefined> {
-  if (
-    !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    !process.env.SUPABASE_SERVICE_ROLE
-  ) {
-    return undefined;
-  }
-
-  const accessToken = (
-    config.configurable?.supabase_session as Session | undefined
-  )?.access_token;
-  if (!accessToken) {
-    return undefined;
-  }
-
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE
-  );
-
-  const authRes = await supabase.auth.getUser(accessToken);
-  return authRes.data.user || undefined;
-}
-
 export function isUsingO1MiniModel(config: LangGraphRunnableConfig) {
   const { modelName } = getModelConfig(config);
   return modelName.includes("o1-mini");
@@ -351,23 +321,6 @@ export async function getModelFromConfig(
     maxTokens: modelConfig?.maxTokens.current,
     ...extra,
   };
-
-  const isLangChainUserModel = LANGCHAIN_USER_ONLY_MODELS.some(
-    (m) => m === modelName
-  );
-  if (isLangChainUserModel) {
-    const user = await getUserFromConfig(config);
-    if (!user) {
-      throw new Error(
-        "Unauthorized. Can not use LangChain only models without a user."
-      );
-    }
-    if (!user.email?.endsWith("@langchain.dev")) {
-      throw new Error(
-        "Unauthorized. Can not use LangChain only models without a user with a @langchain.dev email."
-      );
-    }
-  }
 
   const includeStandardParams = !TEMPERATURE_EXCLUDED_MODELS.some(
     (m) => m === modelName
