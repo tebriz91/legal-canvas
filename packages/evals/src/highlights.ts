@@ -7,7 +7,7 @@ const runGraph = async (
   input: Record<string, any>
 ): Promise<Record<string, any>> => {
   // Interrupt after updating the artifact
-  graph.interruptAfter = ["updateArtifact"];
+  // graph.interruptAfter = ["updateArtifact"];
   return await graph.invoke(input);
 };
 

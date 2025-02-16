@@ -1,4 +1,3 @@
-import { ProgrammingLanguageOptions } from "@opencanvas/shared/types";
 import { ThreadPrimitive, useThreadRuntime } from "@assistant-ui/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { FC, useMemo } from "react";
@@ -43,8 +42,7 @@ function getRandomPrompts(prompts: string[], count: number = 4): string[] {
 
 interface QuickStartButtonsProps {
   handleQuickStart: (
-    type: "text" | "code",
-    language?: ProgrammingLanguageOptions
+    type: "text"
   ) => void;
   composer: React.ReactNode;
   searchEnabled: boolean;
@@ -93,8 +91,8 @@ const QuickStartPrompts = ({ searchEnabled }: QuickStartPromptsProps) => {
 };
 
 const QuickStartButtons = (props: QuickStartButtonsProps) => {
-  const handleLanguageSubmit = (language: ProgrammingLanguageOptions) => {
-    props.handleQuickStart("code", language);
+  const handleLanguageSubmit = () => {
+    props.handleQuickStart("text");
   };
 
   return (
@@ -124,8 +122,7 @@ const QuickStartButtons = (props: QuickStartButtonsProps) => {
 
 interface ThreadWelcomeProps {
   handleQuickStart: (
-    type: "text" | "code",
-    language?: ProgrammingLanguageOptions
+    type: "text"
   ) => void;
   composer: React.ReactNode;
   searchEnabled: boolean;
