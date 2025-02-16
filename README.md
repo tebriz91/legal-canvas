@@ -194,3 +194,4 @@ There are three main labels:
 - `fullstack`: This label is added to issues which require touching both the frontend and agent code.
 
 If you have questions about contributing, please reach out to me via email: `brace(at)langchain(dot)dev`. For general bugs/issues with the code, please [open an issue on GitHub](https://github.com/langchain-ai/open-canvas/issues/new).
+# legal-canvas
