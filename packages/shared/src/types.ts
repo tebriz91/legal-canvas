@@ -60,13 +60,7 @@ export interface ArtifactToolResponse {
 export type RewriteArtifactMetaToolResponse = {
   type: "text";
   title?: string;
-  // language: ProgrammingLanguageOptions;
 };
-// | {
-//     type: "code";
-//     title: string;
-//     language: ProgrammingLanguageOptions;
-//   };
 
 export type LanguageOptions =
   | "english"
@@ -75,23 +69,6 @@ export type LanguageOptions =
   | "french"
   | "hindi";
 
-// ! REMOVE
-// export type ProgrammingLanguageOptions =
-//   | "typescript"
-//   | "javascript"
-//   | "cpp"
-//   | "java"
-//   | "php"
-//   | "python"
-//   | "html"
-//   | "sql"
-//   | "json"
-//   | "rust"
-//   | "xml"
-//   | "clojure"
-//   | "csharp"
-//   | "other";
-
 export type ReadingLevelOptions =
   | "pirate"
   | "child"
@@ -99,27 +76,12 @@ export type ReadingLevelOptions =
   | "college"
   | "phd";
 
-// ! REMOVE
-// export interface CodeHighlight {
-//   startCharIndex: number;
-//   endCharIndex: number;
-// }
-
 export interface ArtifactMarkdownV3 {
   index: number;
   type: "text";
   title: string;
   fullMarkdown: string;
 }
-
-// ! REMOVE
-// export interface ArtifactCodeV3 {
-//   index: number;
-//   type: "code";
-//   title: string;
-//   language: ProgrammingLanguageOptions;
-//   code: string;
-// }
 
 export interface ArtifactV3 {
   currentIndex: number;
@@ -208,25 +170,14 @@ export type SearchResult = DocumentInterface<ExaMetadata>;
 
 export interface GraphInput {
   messages?: Record<string, any>[];
-
-  // highlightedCode?: CodeHighlight; // ! REMOVE
   highlightedText?: TextHighlight;
-
   artifact?: ArtifactV3;
-
   next?: string;
-
   language?: LanguageOptions;
   artifactLength?: ArtifactLengthOptions;
   regenerateWithEmojis?: boolean;
   readingLevel?: ReadingLevelOptions;
-
-  // addComments?: boolean;
-  // addLogs?: boolean;
-  // portLanguage?: ProgrammingLanguageOptions;
-  // fixBugs?: boolean;
   customQuickActionId?: string;
-
   webSearchEnabled?: boolean;
   webSearchResults?: SearchResult[];
 }

@@ -13,23 +13,6 @@ import {
 } from "@langchain/core/messages";
 import { parsePartialJson } from "@langchain/core/output_parsers";
 
-export function removeCodeBlockFormatting(text: string): string {
-  if (!text) return text;
-  // Regular expression to match code blocks
-  const codeBlockRegex = /^```[\w-]*\n([\s\S]*?)\n```$/;
-
-  // Check if the text matches the code block pattern
-  const match = text.match(codeBlockRegex);
-
-  if (match) {
-    // If it matches, return the content inside the code block
-    return match[1].trim();
-  } else {
-    // If it doesn't match, return the original text
-    return text;
-  }
-}
-
 export const replaceOrInsertMessageChunk = (
   prevMessages: BaseMessage[],
   newMessageChunk: BaseMessageChunk
@@ -270,11 +253,7 @@ export function handleGenerateArtifactToolCallChunk(toolCallChunkArgs: string) {
     return "continue";
   }
 
-  if (
-    newArtifactText.artifact &&
-    (newArtifactText.type === "text" ||
-      (newArtifactText.type === "code" && newArtifactText.language))
-  ) {
+  if (newArtifactText.artifact && newArtifactText.type === "text") {
     const content = createNewGeneratedArtifactFromTool(newArtifactText);
     if (!content) {
       return undefined;

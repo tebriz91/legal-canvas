@@ -882,7 +882,6 @@ export function GraphProvider({ children }: { children: ReactNode }) {
             if (
               [
                 "rewriteArtifactTheme",
-                // "rewriteCodeArtifactTheme", // ! REMOVE
                 "customAction",
               ].includes(langgraphNode) &&
               NON_STREAMING_TEXT_MODELS.some((m) => m === threadData.modelName)

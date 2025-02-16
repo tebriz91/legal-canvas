@@ -44,15 +44,6 @@ export interface ArtifactMarkdownContent {
   type: "text";
 }
 
-// ! REMOVE
-// export interface ArtifactCodeContent {
-//   index: number;
-//   code: string;
-//   title: string;
-//   type: "code";
-//   language: ProgrammingLanguageOptions;
-// }
-
 export interface Highlight {
   /**
    * The index of the first character of the highlighted text

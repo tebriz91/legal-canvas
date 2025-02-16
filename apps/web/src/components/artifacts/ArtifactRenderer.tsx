@@ -47,10 +47,6 @@ function ArtifactRendererComponent(props: ArtifactRendererProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const selectionBoxRef = useRef<HTMLDivElement>(null);
   const [selectionBox, setSelectionBox] = useState<SelectionBox>();
-  const [selectionIndexes, setSelectionIndexes] = useState<{
-    start: number;
-    end: number;
-  }>();
   const [isInputVisible, setIsInputVisible] = useState(false);
   const [isSelectionActive, setIsSelectionActive] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -111,7 +107,6 @@ function ArtifactRendererComponent(props: ArtifactRendererProps) {
   const handleCleanupState = () => {
     setIsInputVisible(false);
     setSelectionBox(undefined);
-    setSelectionIndexes(undefined);
     setIsSelectionActive(false);
     setIsValidSelectionOrigin(false);
     setInputValue("");
@@ -144,12 +139,6 @@ function ArtifactRendererComponent(props: ArtifactRendererProps) {
     handleCleanupState();
     await streamMessage({
       messages: [convertToOpenAIFormat(humanMessage)],
-      ...(selectionIndexes && {
-        highlightedCode: {
-          startCharIndex: selectionIndexes.start,
-          endCharIndex: selectionIndexes.end,
-        },
-      }),
     });
   };
 
