@@ -8,14 +8,10 @@ import {
   DEFAULT_MODEL_NAME,
 } from "@opencanvas/shared/models";
 import { useGraphContext } from "@/contexts/GraphContext";
-import { useToast } from "@/hooks/use-toast";
-import { getLanguageTemplate } from "@/lib/get_language_template";
 import {
-  ArtifactCodeV3,
   ArtifactMarkdownV3,
   ArtifactV3,
   CustomModelConfig,
-  ProgrammingLanguageOptions,
 } from "@opencanvas/shared/types";
 import React, { useEffect, useState } from "react";
 import { ContentComposerChatInterface } from "./content-composer";
@@ -36,7 +32,6 @@ export function CanvasComponent() {
   const { threadId, clearThreadsWithNoValues, setModelName, setModelConfig } =
     useThreadContext();
   const { setArtifact, chatStarted, setChatStarted } = graphData;
-  const { toast } = useToast();
   const [isEditing, setIsEditing] = useState(false);
   const [webSearchResultsOpen, setWebSearchResultsOpen] = useState(false);
   const [chatCollapsed, setChatCollapsed] = useState(false);
@@ -64,36 +59,16 @@ export function CanvasComponent() {
   }, [threadId, user]);
 
   const handleQuickStart = (
-    type: "text" | "code",
-    language?: ProgrammingLanguageOptions
+    type: "text",
   ) => {
-    if (type === "code" && !language) {
-      toast({
-        title: "Language not selected",
-        description: "Please select a language to continue",
-        duration: 5000,
-      });
-      return;
-    }
     setChatStarted(true);
 
-    let artifactContent: ArtifactCodeV3 | ArtifactMarkdownV3;
-    if (type === "code" && language) {
-      artifactContent = {
-        index: 1,
-        type: "code",
-        title: `Quick start ${type}`,
-        code: getLanguageTemplate(language),
-        language,
-      };
-    } else {
-      artifactContent = {
-        index: 1,
-        type: "text",
-        title: `Quick start ${type}`,
-        fullMarkdown: "",
-      };
-    }
+    const artifactContent: ArtifactMarkdownV3 = {
+      index: 1,
+      type: "text",
+      title: `Quick start ${type}`,
+      fullMarkdown: "",
+    };
 
     const newArtifact: ArtifactV3 = {
       currentIndex: 1,
