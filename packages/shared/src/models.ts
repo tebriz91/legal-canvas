@@ -82,7 +82,7 @@ const OPENAI_MODELS: ModelConfigurationParams[] = [
         current: 4096,
       },
     },
-    isNew: true,
+    isNew: false,
   },
   {
     name: "o1-mini",
@@ -102,28 +102,28 @@ const OPENAI_MODELS: ModelConfigurationParams[] = [
         current: 4096,
       },
     },
-    isNew: true,
+    isNew: false,
   },
-  {
-    name: "o1",
-    label: "o1",
-    config: {
-      provider: "openai",
-      temperatureRange: {
-        min: 0,
-        max: 1,
-        default: 0.5,
-        current: 0.5,
-      },
-      maxTokens: {
-        min: 1,
-        max: 100000,
-        default: 4096,
-        current: 4096,
-      },
-    },
-    isNew: true,
-  },
+  // {
+  //   name: "o1",
+  //   label: "o1",
+  //   config: {
+  //     provider: "openai",
+  //     temperatureRange: {
+  //       min: 0,
+  //       max: 1,
+  //       default: 0.5,
+  //       current: 0.5,
+  //     },
+  //     maxTokens: {
+  //       min: 1,
+  //       max: 100000,
+  //       default: 4096,
+  //       current: 4096,
+  //     },
+  //   },
+  //   isNew: false,
+  // },
 ];
 
 /**
@@ -148,7 +148,7 @@ const OLLAMA_MODELS = [
         current: 2048,
       },
     },
-    isNew: true,
+    isNew: false,
   },
 ];
 
@@ -171,7 +171,7 @@ const ANTHROPIC_MODELS = [
         current: 4096,
       },
     },
-    isNew: true,
+    isNew: false,
   },
   {
     name: "claude-3-5-haiku-20241022",
@@ -187,26 +187,6 @@ const ANTHROPIC_MODELS = [
       maxTokens: {
         min: 1,
         max: 8192,
-        default: 4096,
-        current: 4096,
-      },
-    },
-    isNew: false,
-  },
-  {
-    name: "claude-3-haiku-20240307",
-    label: "Claude 3 Haiku (old)",
-    config: {
-      provider: "anthropic",
-      temperatureRange: {
-        min: 0,
-        max: 1,
-        default: 0.5,
-        current: 0.5,
-      },
-      maxTokens: {
-        min: 1,
-        max: 4096,
         default: 4096,
         current: 4096,
       },
@@ -234,7 +214,7 @@ const FIREWORKS_MODELS: ModelConfigurationParams[] = [
         current: 4096,
       },
     },
-    isNew: true,
+    isNew: false,
   },
   {
     name: "accounts/fireworks/models/llama-v3p1-70b-instruct",
@@ -274,7 +254,7 @@ const FIREWORKS_MODELS: ModelConfigurationParams[] = [
         current: 4096,
       },
     },
-    isNew: true,
+    isNew: false,
   },
   {
     name: "accounts/fireworks/models/deepseek-r1",
@@ -294,7 +274,7 @@ const FIREWORKS_MODELS: ModelConfigurationParams[] = [
         current: 4096,
       },
     },
-    isNew: true,
+    isNew: false,
   },
 ];
 
@@ -317,7 +297,7 @@ const GROQ_MODELS: ModelConfigurationParams[] = [
         current: 4096,
       },
     },
-    isNew: true,
+    isNew: false,
   },
 ];
 
@@ -360,7 +340,7 @@ const GEMINI_MODELS: ModelConfigurationParams[] = [
         current: 4096,
       },
     },
-    isNew: true,
+    isNew: false,
   },
   {
     name: "gemini-2.0-flash-thinking-exp-01-21",
@@ -380,7 +360,7 @@ const GEMINI_MODELS: ModelConfigurationParams[] = [
         current: 4096,
       },
     },
-    isNew: true,
+    isNew: false,
   },
 ];
 
