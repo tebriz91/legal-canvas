@@ -1,7 +1,7 @@
 import { ReflectionsDialog } from "../../reflections-dialog/ReflectionsDialog";
 import { ArtifactTitle } from "./artifact-title";
 import { NavigateArtifactHistory } from "./navigate-artifact-history";
-import { ArtifactMarkdownV3 } from "@opencanvas/shared/types";
+import { ArtifactMarkdownV3 } from "@legal-canvas/shared/types";
 import { Assistant } from "@langchain/langgraph-sdk";
 import { PanelRightClose } from "lucide-react";
 import { TooltipIconButton } from "@/components/ui/assistant-ui/tooltip-icon-button";

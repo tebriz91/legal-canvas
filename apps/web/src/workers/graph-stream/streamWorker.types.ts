@@ -1,5 +1,5 @@
-import { ALL_MODEL_NAMES } from "@opencanvas/shared/models";
-import { CustomModelConfig, GraphInput } from "@opencanvas/shared/types";
+import { ALL_MODEL_NAMES } from "@legal-canvas/shared/models";
+import { CustomModelConfig, GraphInput } from "@legal-canvas/shared/types";
 
 export interface StreamWorkerMessage {
   type: "chunk" | "done" | "error";

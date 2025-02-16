@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import { ActionsToolbar } from "./actions_toolbar";
 import { TextRenderer } from "./TextRenderer";
 import { CustomQuickActions } from "./actions_toolbar/custom";
-import { getArtifactContent } from "@opencanvas/shared/utils/artifacts";
+import { getArtifactContent } from "@legal-canvas/shared/utils/artifacts";
 import { ArtifactLoading } from "./ArtifactLoading";
 import { AskOpenCanvas } from "./components/AskOpenCanvas";
 import { useGraphContext } from "@/contexts/GraphContext";

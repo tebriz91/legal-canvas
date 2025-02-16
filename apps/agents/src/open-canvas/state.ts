@@ -6,13 +6,13 @@ import {
   ArtifactV3,
   TextHighlight,
   SearchResult,
-} from "@opencanvas/shared/types";
+} from "@legal-canvas/shared/types";
 import {
   Annotation,
   MessagesAnnotation,
   messagesStateReducer,
 } from "@langchain/langgraph";
-import { OC_SUMMARIZED_MESSAGE_KEY } from "@opencanvas/shared/constants";
+import { OC_SUMMARIZED_MESSAGE_KEY } from "@legal-canvas/shared/constants";
 
 export type Messages =
   | Array<BaseMessage | BaseMessageLike>

@@ -1,6 +1,6 @@
 import { useToast } from "@/hooks/use-toast";
 import { Assistant } from "@langchain/langgraph-sdk";
-import { ContextDocument } from "@opencanvas/shared/types";
+import { ContextDocument } from "@legal-canvas/shared/types";
 import {
   createContext,
   Dispatch,

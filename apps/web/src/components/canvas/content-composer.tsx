@@ -7,7 +7,7 @@ import {
 } from "@/lib/convert_messages";
 import {
   ContextDocument,
-} from "@opencanvas/shared/types";
+} from "@legal-canvas/shared/types";
 import {
   AppendMessage,
   AssistantRuntimeProvider,

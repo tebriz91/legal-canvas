@@ -6,13 +6,13 @@ import {
   ALL_MODEL_NAMES,
   DEFAULT_MODEL_CONFIG,
   DEFAULT_MODEL_NAME,
-} from "@opencanvas/shared/models";
+} from "@legal-canvas/shared/models";
 import { useGraphContext } from "@/contexts/GraphContext";
 import {
   ArtifactMarkdownV3,
   ArtifactV3,
   CustomModelConfig,
-} from "@opencanvas/shared/types";
+} from "@legal-canvas/shared/types";
 import React, { useEffect, useState } from "react";
 import { ContentComposerChatInterface } from "./content-composer";
 import NoSSRWrapper from "../NoSSRWrapper";

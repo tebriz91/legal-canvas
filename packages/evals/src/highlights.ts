@@ -1,5 +1,5 @@
 import { type Example, Run } from "langsmith";
-import { graph } from "@opencanvas/agents/dist/open-canvas/index";
+import { graph } from "@legal-canvas/agents/dist/open-canvas/index";
 import { evaluate, EvaluationResult } from "langsmith/evaluation";
 import "dotenv/config";
 

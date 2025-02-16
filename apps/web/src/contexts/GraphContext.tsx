@@ -3,7 +3,7 @@ import { useUserContext } from "@/contexts/UserContext";
 import {
   isArtifactMarkdownContent,
   isDeprecatedArtifactType,
-} from "@opencanvas/shared/utils/artifacts";
+} from "@legal-canvas/shared/utils/artifacts";
 import {
   ArtifactType,
   ArtifactV3,
@@ -12,7 +12,7 @@ import {
   RewriteArtifactMetaToolResponse,
   SearchResult,
   TextHighlight,
-} from "@opencanvas/shared/types";
+} from "@legal-canvas/shared/types";
 import { AIMessage, BaseMessage } from "@langchain/core/messages";
 import { useRuns } from "@/hooks/useRuns";
 import { createClient } from "@/hooks/utils";
@@ -24,14 +24,14 @@ import {
 import {
   DEFAULT_INPUTS,
   OC_WEB_SEARCH_RESULTS_MESSAGE_KEY,
-} from "@opencanvas/shared/constants";
+} from "@legal-canvas/shared/constants";
 import {
   ALL_MODEL_NAMES,
   NON_STREAMING_TEXT_MODELS,
   NON_STREAMING_TOOL_CALLING_MODELS,
   DEFAULT_MODEL_CONFIG,
   DEFAULT_MODEL_NAME,
-} from "@opencanvas/shared/models";
+} from "@legal-canvas/shared/models";
 import { Thread } from "@langchain/langgraph-sdk";
 import { useToast } from "@/hooks/use-toast";
 import {
@@ -55,7 +55,7 @@ import {
 import {
   handleRewriteArtifactThinkingModel,
   isThinkingModel,
-} from "@opencanvas/shared/utils/thinking";
+} from "@legal-canvas/shared/utils/thinking";
 import { debounce } from "lodash";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useThreadContext } from "./ThreadProvider";

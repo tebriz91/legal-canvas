@@ -5,13 +5,13 @@ import {
   createContextDocumentMessages,
   getModelConfig,
 } from "../../../utils.js";
-import { ContextDocument } from "@opencanvas/shared/types";
+import { ContextDocument } from "@legal-canvas/shared/types";
 import {
   BaseMessage,
   HumanMessage,
   RemoveMessage,
 } from "@langchain/core/messages";
-import { OC_HIDE_FROM_UI_KEY } from "@opencanvas/shared/constants";
+import { OC_HIDE_FROM_UI_KEY } from "@legal-canvas/shared/constants";
 
 /**
  * Checks for context documents in a human message, and if found, converts

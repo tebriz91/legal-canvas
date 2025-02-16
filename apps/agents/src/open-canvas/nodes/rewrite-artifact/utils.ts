@@ -1,5 +1,5 @@
-import { getArtifactContent } from "@opencanvas/shared/utils/artifacts";
-import { ArtifactMarkdownV3 } from "@opencanvas/shared/types";
+import { getArtifactContent } from "@legal-canvas/shared/utils/artifacts";
+import { ArtifactMarkdownV3 } from "@legal-canvas/shared/types";
 import {
   OPTIONALLY_UPDATE_META_PROMPT,
   UPDATE_ENTIRE_ARTIFACT_PROMPT,

@@ -1,4 +1,4 @@
-import { extractUrls } from "@opencanvas/shared/utils/urls";
+import { extractUrls } from "@legal-canvas/shared/utils/urls";
 import { LangGraphRunnableConfig } from "@langchain/langgraph";
 import {
   OpenCanvasGraphAnnotation,

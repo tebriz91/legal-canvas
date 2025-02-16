@@ -1,12 +1,12 @@
 import { BaseMessage } from "@langchain/core/messages";
 import { LangGraphRunnableConfig } from "@langchain/langgraph";
-import { getArtifactContent } from "@opencanvas/shared/utils/artifacts";
+import { getArtifactContent } from "@legal-canvas/shared/utils/artifacts";
 import {
   ArtifactMarkdownV3,
   ArtifactV3,
   CustomQuickAction,
   Reflections,
-} from "@opencanvas/shared/types";
+} from "@legal-canvas/shared/types";
 import {
   ensureStoreInConfig,
   formatReflections,
@@ -17,7 +17,7 @@ import {
   CUSTOM_QUICK_ACTION_ARTIFACT_PROMPT_PREFIX,
   CUSTOM_QUICK_ACTION_CONVERSATION_CONTEXT,
   REFLECTIONS_QUICK_ACTION_PROMPT,
-} from "@opencanvas/shared/prompts/quick-actions";
+} from "@legal-canvas/shared/prompts/quick-actions";
 import {
   OpenCanvasGraphAnnotation,
   OpenCanvasGraphReturnType,

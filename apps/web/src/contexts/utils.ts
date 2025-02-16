@@ -5,7 +5,7 @@ import {
   ArtifactToolResponse,
   ArtifactV3,
   RewriteArtifactMetaToolResponse,
-} from "@opencanvas/shared/types";
+} from "@legal-canvas/shared/types";
 import {
   AIMessage,
   BaseMessage,

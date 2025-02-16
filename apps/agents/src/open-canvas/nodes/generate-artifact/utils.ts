@@ -1,5 +1,5 @@
 import { NEW_ARTIFACT_PROMPT } from "../../prompts.js";
-import { ArtifactMarkdownV3 } from "@opencanvas/shared/types";
+import { ArtifactMarkdownV3 } from "@legal-canvas/shared/types";
 import { z } from "zod";
 import { ARTIFACT_TOOL_SCHEMA } from "./schemas.js";
 

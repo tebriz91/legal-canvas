@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CircleArrowUp } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ArtifactV3 } from "@opencanvas/shared/types";
-// import { getArtifactContent } from "@opencanvas/shared/utils/artifacts";
+import { ArtifactV3 } from "@legal-canvas/shared/types";
+// import { getArtifactContent } from "@legal-canvas/shared/utils/artifacts";
 import { useToast } from "@/hooks/use-toast";
 
 interface AskOpenCanvasProps {
