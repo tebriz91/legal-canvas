@@ -24,11 +24,11 @@ export const replyToGeneralInput = async (
 ): Promise<OpenCanvasGraphReturnType> => {
   const smallModel = await getModelFromConfig(config);
 
-  const prompt = `You are an AI assistant tasked with responding to the users question.
+  const prompt = `You are an AI assistant tasked with responding to the user's (lawyer's) question.
   
-The user has generated artifacts in the past. Use the following artifacts as context when responding to the users question.
+The lawyer has generated artifacts (legal documents) in the past. Use the following artifacts (legal documents) as context when responding to the user's (lawyer's) question.
 
-You also have the following reflections on style guidelines and general memories/facts about the user to use when generating your response.
+You also have the following reflections on style guidelines and general memories/facts about the user (lawyer) to use when generating your response.
 <reflections>
 {reflections}
 </reflections>

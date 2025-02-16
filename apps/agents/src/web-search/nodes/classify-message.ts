@@ -2,8 +2,8 @@ import { ChatAnthropic } from "@langchain/anthropic";
 import { WebSearchState } from "../state.js";
 import z from "zod";
 
-const CLASSIFIER_PROMPT = `You're a helpful AI assistant tasked with classifying the user's latest message.
-The user has enabled web search for their conversation, however not all messages should be searched.
+const CLASSIFIER_PROMPT = `You're a helpful AI assistant tasked with classifying the user's (lawyer's) latest message.
+The user (lawyer) has enabled web search for their conversation, however not all messages should be searched.
 
 Analyze their latest message in isolation and determine if it warrants a web search to include additional context.
 
@@ -16,10 +16,10 @@ const classificationSchema = z
     shouldSearch: z
       .boolean()
       .describe(
-        "Whether or not to search the web based on the user's latest message."
+        "Whether or not to search the web based on the user's (lawyer's) latest message."
       ),
   })
-  .describe("The classification of the user's latest message.");
+  .describe("The classification of the user's (lawyer's) latest message.");
 
 export async function classifyMessage(
   state: WebSearchState

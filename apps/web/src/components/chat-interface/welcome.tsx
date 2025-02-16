@@ -6,26 +6,26 @@ import { NotebookPen } from "lucide-react";
 import { Button } from "../ui/button";
 
 const QUICK_START_PROMPTS_SEARCH = [
-  "Write a market analysis of AI chip manufacturers in 2025",
-  "Create a blog post about the latest climate change policies and their impact",
-  "Draft an investor update on renewable energy trends this quarter",
-  "Write a report on current cybersecurity threats in cloud computing",
-  "Analyze the latest developments in quantum computing for a tech newsletter",
-  "Create a summary of emerging medical breakthroughs in cancer treatment",
-  "Write about the impact of current interest rates on the housing market",
-  "Draft an article about breakthroughs in battery technology this year",
-  "Analyze current supply chain disruptions in semiconductor manufacturing",
-  "Write about how recent AI regulations affect business innovation",
+  "Analyze recent case law regarding data privacy for law firms.",
+  "Research the latest regulations on intellectual property in AI-generated content.",
+  "Draft a comparative analysis of contract law in New York and California.",
+  "Write a market analysis of legal tech startups focusing on e-discovery.",
+  "Create a report on current cybersecurity threats for law firms.",
+  "Analyze the implications of GDPR for international law firms.",
+  "Research the latest developments in blockchain for legal contracts.",
+  "Draft a summary of emerging legal issues in cryptocurrency regulation.",
+  "Analyze current supply chain risks in international trade law.",
+  "Write about how recent AI ethics guidelines affect legal AI development.",
 ];
 
 const QUICK_START_PROMPTS = [
-  "Write a bedtime story about a brave little robot",
-  "Draft a resignation letter for a position I've had for 2 years",
-  "Write a poem about artificial intelligence",
-  "Draft a congratulatory speech for my sister's graduation",
-  "Write instructions for making perfect scrambled eggs",
-  "Explain why the sky is blue in a short essay",
-  "Help me draft an email to my professor Craig",
+  "Draft a demand letter for breach of contract.",
+  "Write a simple non-disclosure agreement (NDA).",
+  "Draft a client intake form for a new business client.",
+  "Write a summary of a deposition transcript excerpt.",
+  "Help me draft an email to opposing counsel about discovery.",
+  "Explain 'attorney-client privilege' in simple terms for a client.",
+  "Draft a clause for a contract about dispute resolution.",
 ];
 
 // count is the number of prompts to return
