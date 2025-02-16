@@ -14,14 +14,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { CustomQuickAction } from "@opencanvas/shared/types";
+import { CustomQuickAction } from "@legal-canvas/shared/types";
 import { NewCustomQuickActionDialog } from "./NewCustomQuickActionDialog";
 import { useEffect, useState } from "react";
 import { useStore } from "@/hooks/useStore";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { TighterText } from "@/components/ui/header";
-import { GraphInput } from "@opencanvas/shared/types";
+import { GraphInput } from "@legal-canvas/shared/types";
 import { User } from "@supabase/supabase-js";
 
 export interface CustomQuickActionsProps {

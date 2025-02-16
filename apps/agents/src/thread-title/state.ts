@@ -1,5 +1,5 @@
 import { Annotation, MessagesAnnotation } from "@langchain/langgraph";
-import { ArtifactV3 } from "@opencanvas/shared/types";
+import { ArtifactV3 } from "@legal-canvas/shared/types";
 
 export const TitleGenerationAnnotation = Annotation.Root({
   /**

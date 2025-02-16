@@ -1,12 +1,5 @@
-import {
-  getArtifactContent,
-  isArtifactCodeContent,
-} from "@opencanvas/shared/utils/artifacts";
-import {
-  ArtifactCodeV3,
-  ArtifactMarkdownV3,
-  ProgrammingLanguageOptions,
-} from "@opencanvas/shared/types";
+import { getArtifactContent } from "@legal-canvas/shared/utils/artifacts";
+import { ArtifactMarkdownV3 } from "@legal-canvas/shared/types";
 import {
   OPTIONALLY_UPDATE_META_PROMPT,
   UPDATE_ENTIRE_ARTIFACT_PROMPT,
@@ -39,7 +32,7 @@ const buildMetaPrompt = (
   artifactMetaToolCall: z.infer<typeof OPTIONALLY_UPDATE_ARTIFACT_META_SCHEMA>
 ) => {
   const titleSection =
-    artifactMetaToolCall?.title && artifactMetaToolCall?.type !== "code"
+    artifactMetaToolCall?.title && artifactMetaToolCall?.type === "text"
       ? `And its title is (do NOT include this in your response):\n${artifactMetaToolCall.title}`
       : "";
 
@@ -75,43 +68,21 @@ export const buildPrompt = ({
 interface CreateNewArtifactContentArgs {
   artifactType: string;
   state: typeof OpenCanvasGraphAnnotation.State;
-  currentArtifactContent: ArtifactCodeV3 | ArtifactMarkdownV3;
+  currentArtifactContent: ArtifactMarkdownV3;
   artifactMetaToolCall: z.infer<typeof OPTIONALLY_UPDATE_ARTIFACT_META_SCHEMA>;
   newContent: string;
 }
 
-const getLanguage = (
-  artifactMetaToolCall: z.infer<typeof OPTIONALLY_UPDATE_ARTIFACT_META_SCHEMA>,
-  currentArtifactContent: ArtifactCodeV3 | ArtifactMarkdownV3 // Replace 'any' with proper type
-) =>
-  artifactMetaToolCall?.language ||
-  (isArtifactCodeContent(currentArtifactContent)
-    ? currentArtifactContent.language
-    : "other");
-
 export const createNewArtifactContent = ({
-  artifactType,
   state,
   currentArtifactContent,
   artifactMetaToolCall,
   newContent,
-}: CreateNewArtifactContentArgs): ArtifactCodeV3 | ArtifactMarkdownV3 => {
+}: CreateNewArtifactContentArgs): ArtifactMarkdownV3 => {
   const baseContent = {
     index: state.artifact.contents.length + 1,
     title: artifactMetaToolCall?.title || currentArtifactContent.title,
   };
-
-  if (artifactType === "code") {
-    return {
-      ...baseContent,
-      type: "code",
-      language: getLanguage(
-        artifactMetaToolCall,
-        currentArtifactContent
-      ) as ProgrammingLanguageOptions,
-      code: newContent,
-    };
-  }
 
   return {
     ...baseContent,

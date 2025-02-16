@@ -5,9 +5,9 @@ import {
   School,
   Swords,
 } from "lucide-react";
-import { ReadingLevelOptions as ReadingLevelOptionsType } from "@opencanvas/shared/types";
+import { ReadingLevelOptions as ReadingLevelOptionsType } from "@legal-canvas/shared/types";
 import { TooltipIconButton } from "@/components/ui/assistant-ui/tooltip-icon-button";
-import { GraphInput } from "@opencanvas/shared/types";
+import { GraphInput } from "@legal-canvas/shared/types";
 
 export interface ReadingLevelOptionsProps {
   streamMessage: (params: GraphInput) => Promise<void>;

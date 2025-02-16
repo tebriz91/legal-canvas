@@ -1,5 +1,6 @@
 {
   "name": "legal-canvas",
+  "author": "Tebriz Tagiev",
   "repository": "https://github.com/tebriz91/legal-canvas",
   "private": true,
   "workspaces": ["apps/*", "packages/*"],

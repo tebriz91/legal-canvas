@@ -12,8 +12,8 @@ import { ConfigurableChatModelCallOptions } from "langchain/chat_models/universa
 import {
   getArtifactContent,
   isArtifactMarkdownContent,
-} from "@opencanvas/shared/utils/artifacts";
-import { ArtifactMarkdownV3 } from "@opencanvas/shared/types";
+} from "@legal-canvas/shared/utils/artifacts";
+import { ArtifactMarkdownV3 } from "@legal-canvas/shared/types";
 import {
   OpenCanvasGraphAnnotation,
   OpenCanvasGraphReturnType,

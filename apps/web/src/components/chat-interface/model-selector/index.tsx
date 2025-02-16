@@ -11,7 +11,7 @@ import {
   ALL_MODEL_NAMES,
   ALL_MODELS,
   LANGCHAIN_USER_ONLY_MODELS,
-} from "@opencanvas/shared/models";
+} from "@legal-canvas/shared/models";
 import {
   Dispatch,
   SetStateAction,
@@ -25,7 +25,7 @@ import { cn } from "@/lib/utils";
 import {
   CustomModelConfig,
   ModelConfigurationParams,
-} from "@opencanvas/shared/types";
+} from "@legal-canvas/shared/types";
 import { CaretSortIcon, GearIcon } from "@radix-ui/react-icons";
 import {
   Popover,

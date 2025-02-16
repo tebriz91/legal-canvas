@@ -1,16 +1,12 @@
 import { BaseMessage } from "@langchain/core/messages";
 import { LangGraphRunnableConfig } from "@langchain/langgraph";
+import { getArtifactContent } from "@legal-canvas/shared/utils/artifacts";
 import {
-  getArtifactContent,
-  isArtifactMarkdownContent,
-} from "@opencanvas/shared/utils/artifacts";
-import {
-  ArtifactCodeV3,
   ArtifactMarkdownV3,
   ArtifactV3,
   CustomQuickAction,
   Reflections,
-} from "@opencanvas/shared/types";
+} from "@legal-canvas/shared/types";
 import {
   ensureStoreInConfig,
   formatReflections,
@@ -21,7 +17,7 @@ import {
   CUSTOM_QUICK_ACTION_ARTIFACT_PROMPT_PREFIX,
   CUSTOM_QUICK_ACTION_CONVERSATION_CONTEXT,
   REFLECTIONS_QUICK_ACTION_PROMPT,
-} from "@opencanvas/shared/prompts/quick-actions";
+} from "@legal-canvas/shared/prompts/quick-actions";
 import {
   OpenCanvasGraphAnnotation,
   OpenCanvasGraphReturnType,
@@ -105,9 +101,12 @@ export const customAction = async (
     formattedPrompt += `\n\n${formattedConversationHistory}`;
   }
 
-  const artifactContent = isArtifactMarkdownContent(currentArtifactContent)
-    ? currentArtifactContent.fullMarkdown
-    : currentArtifactContent?.code;
+  if (!currentArtifactContent) {
+    throw new Error("No artifact found");
+  }
+
+  const artifactContent = currentArtifactContent.fullMarkdown;
+
   formattedPrompt += `\n\n${CUSTOM_QUICK_ACTION_ARTIFACT_CONTENT_PROMPT.replace("{artifactContent}", artifactContent || "No artifacts generated yet.")}`;
 
   const newArtifactValues = await smallModel.invoke([
@@ -119,12 +118,11 @@ export const customAction = async (
     return {};
   }
 
-  const newArtifactContent: ArtifactCodeV3 | ArtifactMarkdownV3 = {
+  // Since we expect only markdown artifacts, we no longer include the fallback for code content
+  const newArtifactContent: ArtifactMarkdownV3 = {
     ...currentArtifactContent,
     index: state.artifact.contents.length + 1,
-    ...(isArtifactMarkdownContent(currentArtifactContent)
-      ? { fullMarkdown: newArtifactValues.content as string }
-      : { code: newArtifactValues.content as string }),
+    fullMarkdown: newArtifactValues.content as string,
   };
 
   const newArtifact: ArtifactV3 = {

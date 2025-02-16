@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-import { ArtifactLengthOptions } from "@opencanvas/shared/types";
+import { ArtifactLengthOptions } from "@legal-canvas/shared/types";
 import {
   Tooltip,
   TooltipContent,
@@ -8,7 +8,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Slider } from "@/components/ui/slider";
-import { GraphInput } from "@opencanvas/shared/types";
+import { GraphInput } from "@legal-canvas/shared/types";
 
 export interface LengthOptionsProps {
   streamMessage: (params: GraphInput) => Promise<void>;

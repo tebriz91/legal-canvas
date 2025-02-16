@@ -1,13 +1,11 @@
 import { v4 as uuidv4 } from "uuid";
-import { isArtifactCodeContent } from "@opencanvas/shared/utils/artifacts";
 import {
   CustomModelConfig,
-  ArtifactCodeV3,
   ArtifactMarkdownV3,
   Reflections,
   ContextDocument,
   SearchResult,
-} from "@opencanvas/shared/types";
+} from "@legal-canvas/shared/types";
 import { BaseStore, LangGraphRunnableConfig } from "@langchain/langgraph";
 import { initChatModel } from "langchain/chat_models/universal";
 import pdfParse from "pdf-parse";
@@ -21,11 +19,11 @@ import {
 import {
   CONTEXT_DOCUMENTS_NAMESPACE,
   OC_WEB_SEARCH_RESULTS_MESSAGE_KEY,
-} from "@opencanvas/shared/constants";
+} from "@legal-canvas/shared/constants";
 import {
   TEMPERATURE_EXCLUDED_MODELS,
   LANGCHAIN_USER_ONLY_MODELS,
-} from "@opencanvas/shared/models";
+} from "@legal-canvas/shared/models";
 import { createClient, Session, User } from "@supabase/supabase-js";
 
 export const formatReflections = (
@@ -131,26 +129,18 @@ export async function getFormattedReflections(
 }
 
 export const formatArtifactContent = (
-  content: ArtifactMarkdownV3 | ArtifactCodeV3,
+  content: ArtifactMarkdownV3,
   shortenContent?: boolean
 ): string => {
-  let artifactContent: string;
-
-  if (isArtifactCodeContent(content)) {
-    artifactContent = shortenContent
-      ? content.code?.slice(0, 500)
-      : content.code;
-  } else {
-    artifactContent = shortenContent
-      ? content.fullMarkdown?.slice(0, 500)
-      : content.fullMarkdown;
-  }
+  const artifactContent: string = shortenContent
+    ? content.fullMarkdown?.slice(0, 500)
+    : content.fullMarkdown;
   return `Title: ${content.title}\nArtifact type: ${content.type}\nContent: ${artifactContent}`;
 };
 
 export const formatArtifactContentWithTemplate = (
   template: string,
-  content: ArtifactMarkdownV3 | ArtifactCodeV3,
+  content: ArtifactMarkdownV3,
   shortenContent?: boolean
 ): string => {
   return template.replace(

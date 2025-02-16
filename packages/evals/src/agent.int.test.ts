@@ -3,7 +3,7 @@ import * as ls from "langsmith/vitest";
 import { z } from "zod";
 import { ChatOpenAI } from "@langchain/openai";
 
-import { graph } from "@opencanvas/agents/dist/open-canvas/index";
+import { graph } from "@legal-canvas/agents/dist/open-canvas/index";
 import { QUERY_ROUTING_DATA } from "./data/query_routing.js";
 import { CODEGEN_DATA } from "./data/codegen.js";
 

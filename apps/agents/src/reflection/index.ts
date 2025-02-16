@@ -8,14 +8,14 @@ import {
   ReflectionGraphAnnotation,
   ReflectionGraphReturnType,
 } from "./state.js";
-import { Reflections } from "@opencanvas/shared/types";
+import { Reflections } from "@legal-canvas/shared/types";
 import { REFLECT_SYSTEM_PROMPT, REFLECT_USER_PROMPT } from "./prompts.js";
 import { z } from "zod";
 import { ensureStoreInConfig, formatReflections } from "../utils.js";
 import {
   getArtifactContent,
   isArtifactMarkdownContent,
-} from "@opencanvas/shared/utils/artifacts";
+} from "@legal-canvas/shared/utils/artifacts";
 
 export const reflect = async (
   state: typeof ReflectionGraphAnnotation.State,
@@ -58,10 +58,19 @@ export const reflect = async (
     ? getArtifactContent(state.artifact)
     : undefined;
 
+  // Only markdown artifacts are supported. Throw error if not.
+  if (
+    currentArtifactContent &&
+    !isArtifactMarkdownContent(currentArtifactContent)
+  ) {
+    throw new Error(
+      "Unexpected artifact type. Only markdown artifacts are supported."
+    );
+  }
+
+  // Use fullMarkdown from the markdown artifact.
   const artifactContent = currentArtifactContent
-    ? isArtifactMarkdownContent(currentArtifactContent)
-      ? currentArtifactContent.fullMarkdown
-      : currentArtifactContent.code
+    ? currentArtifactContent.fullMarkdown
     : undefined;
 
   const formattedSystemPrompt = REFLECT_SYSTEM_PROMPT.replace(

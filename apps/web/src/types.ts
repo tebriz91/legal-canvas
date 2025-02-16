@@ -1,5 +1,3 @@
-import { ProgrammingLanguageOptions } from "@opencanvas/shared/types";
-
 export type Message = {
   id: string;
   text?: string;
@@ -24,7 +22,7 @@ export type UserRules = {
 
 export interface ArtifactV2 {
   id: string;
-  contents: (ArtifactMarkdownContent | ArtifactCodeContent)[];
+  contents: ArtifactMarkdownContent[];
   currentContentIndex: number;
 }
 
@@ -44,14 +42,6 @@ export interface ArtifactMarkdownContent {
   blocks: MarkdownBlock[];
   title: string;
   type: "text";
-}
-
-export interface ArtifactCodeContent {
-  index: number;
-  code: string;
-  title: string;
-  type: "code";
-  language: ProgrammingLanguageOptions;
 }
 
 export interface Highlight {

@@ -6,9 +6,8 @@ import {
   convertToOpenAIFormat,
 } from "@/lib/convert_messages";
 import {
-  ProgrammingLanguageOptions,
   ContextDocument,
-} from "@opencanvas/shared/types";
+} from "@legal-canvas/shared/types";
 import {
   AppendMessage,
   AssistantRuntimeProvider,
@@ -39,8 +38,7 @@ export interface ContentComposerChatInterfaceProps {
   setChatStarted: React.Dispatch<React.SetStateAction<boolean>>;
   hasChatStarted: boolean;
   handleQuickStart: (
-    type: "text" | "code",
-    language?: ProgrammingLanguageOptions
+    type: "text",
   ) => void;
   chatCollapsed: boolean;
   setChatCollapsed: (c: boolean) => void;

@@ -1,10 +1,8 @@
-import { ProgrammingLanguageOptions } from "@opencanvas/shared/types";
 import { ThreadPrimitive, useThreadRuntime } from "@assistant-ui/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { FC, useMemo } from "react";
 import { TighterText } from "../ui/header";
 import { NotebookPen } from "lucide-react";
-import { ProgrammingLanguagesDropdown } from "../ui/programming-lang-dropdown";
 import { Button } from "../ui/button";
 
 const QUICK_START_PROMPTS_SEARCH = [
@@ -22,29 +20,22 @@ const QUICK_START_PROMPTS_SEARCH = [
 
 const QUICK_START_PROMPTS = [
   "Write a bedtime story about a brave little robot",
-  "Create a function to calculate Fibonacci numbers in TypeScript",
   "Draft a resignation letter for a position I've had for 2 years",
-  "Build a simple weather dashboard using React and Tailwind",
   "Write a poem about artificial intelligence",
-  "Create a basic Express.js REST API with two endpoints",
   "Draft a congratulatory speech for my sister's graduation",
-  "Build a command-line calculator in Python",
   "Write instructions for making perfect scrambled eggs",
-  "Create a simple snake game using HTML canvas",
-  "Write me a TODO app in React",
   "Explain why the sky is blue in a short essay",
   "Help me draft an email to my professor Craig",
-  "Write a web scraping program in Python",
 ];
 
-function getRandomPrompts(prompts: string[], count: number = 4): string[] {
+// count is the number of prompts to return
+function getRandomPrompts(prompts: string[], count = 4): string[] {
   return [...prompts].sort(() => Math.random() - 0.5).slice(0, count);
 }
 
 interface QuickStartButtonsProps {
   handleQuickStart: (
-    type: "text" | "code",
-    language?: ProgrammingLanguageOptions
+    type: "text"
   ) => void;
   composer: React.ReactNode;
   searchEnabled: boolean;
@@ -93,9 +84,6 @@ const QuickStartPrompts = ({ searchEnabled }: QuickStartPromptsProps) => {
 };
 
 const QuickStartButtons = (props: QuickStartButtonsProps) => {
-  const handleLanguageSubmit = (language: ProgrammingLanguageOptions) => {
-    props.handleQuickStart("code", language);
-  };
 
   return (
     <div className="flex flex-col gap-8 items-center justify-center w-full">
@@ -110,7 +98,6 @@ const QuickStartButtons = (props: QuickStartButtonsProps) => {
             New Markdown
             <NotebookPen />
           </Button>
-          <ProgrammingLanguagesDropdown handleSubmit={handleLanguageSubmit} />
         </div>
       </div>
       <div className="flex flex-col gap-6 mt-2 w-full">
@@ -124,8 +111,7 @@ const QuickStartButtons = (props: QuickStartButtonsProps) => {
 
 interface ThreadWelcomeProps {
   handleQuickStart: (
-    type: "text" | "code",
-    language?: ProgrammingLanguageOptions
+    type: "text"
   ) => void;
   composer: React.ReactNode;
   searchEnabled: boolean;

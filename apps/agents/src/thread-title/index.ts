@@ -9,7 +9,7 @@ import { z } from "zod";
 import {
   getArtifactContent,
   isArtifactMarkdownContent,
-} from "@opencanvas/shared/utils/artifacts";
+} from "@legal-canvas/shared/utils/artifacts";
 import { TITLE_SYSTEM_PROMPT, TITLE_USER_PROMPT } from "./prompts.js";
 import {
   TitleGenerationAnnotation,
@@ -45,12 +45,18 @@ export const generateTitle = async (
     ? getArtifactContent(state.artifact)
     : undefined;
 
-  const artifactContent = currentArtifactContent
-    ? isArtifactMarkdownContent(currentArtifactContent)
-      ? currentArtifactContent.fullMarkdown
-      : currentArtifactContent.code
-    : undefined;
+  if (
+    currentArtifactContent &&
+    !isArtifactMarkdownContent(currentArtifactContent)
+  ) {
+    throw new Error(
+      "Unexpected artifact type. Only markdown artifacts are supported."
+    );
+  }
 
+  const artifactContent = currentArtifactContent?.fullMarkdown;
+
+  // If an artifact was generated, include it in the context.
   const artifactContext = artifactContent
     ? `An artifact was generated during this conversation:\n\n${artifactContent}`
     : "No artifact was generated during this conversation.";
